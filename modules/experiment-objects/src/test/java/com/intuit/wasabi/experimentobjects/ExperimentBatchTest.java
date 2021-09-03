@@ -26,24 +26,39 @@ import java.util.Set;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+
 /**
  * This class is testing the functionality of the {@link ExperimentBatch}
  */
 public class ExperimentBatchTest {
 
-    private Set<Experiment.Label> labels = Sets.newHashSet(Experiment.Label.valueOf("a"),
-            Experiment.Label.valueOf("b"), Experiment.Label.valueOf("c"));
+    // private Set<Experiment.Label> labels = Sets.newHashSet(Experiment.Label.valueOf("a"),
+    //         Experiment.Label.valueOf("b"), Experiment.Label.valueOf("c"));
+    private static Experiment.Label set_a = Experiment.Label.valueOf("a");
+    private static Experiment.Label set_b = Experiment.Label.valueOf("b");
+    private static Experiment.Label set_c = Experiment.Label.valueOf("c");
+
+    private static Set<Experiment.Label> labels = new LinkedHashSet<Experiment.Label>();
 
     private static Map<String, Object> profile;
 
     private static Map<String, Object> personalizationParameters;
 
+
     static {
-        profile = new HashMap<>();
+        labels.add(set_a);
+        labels.add(set_b);
+        labels.add(set_c);
+
+        //profile = new HashMap<>();
+        profile = new LinkedHashMap<>();
         profile.put("a.b.c", 42);
         profile.put("d.e.f", 84);
 
-        personalizationParameters = new HashMap<>();
+        //personalizationParameters = new HashMap<>()
+        personalizationParameters = new LinkedHashMap<>();
         personalizationParameters.put("g.h.i", 42);
         personalizationParameters.put("j.k.l", 84);
     }
